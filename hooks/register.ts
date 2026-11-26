@@ -30,10 +30,11 @@ export const register: Register = on => {
           const busy = mainBusy || background.size > 0 || agents.some(a => ACTIVE.has(a.status))
           if (busy && !child) {
             const env = (await $.process.hookEnv().catch(() => ({}))) as Record<string, string>
-            // -d display sleep, -i idle sleep, -m disk idle sleep, -s system sleep (on AC).
+            // -d display sleep, -i idle sleep (works on battery), -m disk idle sleep.
+            // no -s on purpose. it only applies on AC and -i already holds on battery.
             // there's no network flag. network stays up as long as the system doesn't sleep.
             // -w ties caffeinate to claude's pid as a backstop
-            const flags = ['-d', '-i', '-m', '-s']
+            const flags = ['-d', '-i', '-m']
             const argv = env.CLAUDE_PID ? ['caffeinate', ...flags, '-w', env.CLAUDE_PID] : ['caffeinate', ...flags]
             const stream = $.process.spawn({ argv })
             child = stream

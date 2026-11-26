@@ -1,6 +1,6 @@
 # caffeinate
 
-a claude code mod that keeps your mac awake (`caffeinate -dims`) while a session has anything in flight, and lets go as soon as it's idle. that blocks display sleep, idle sleep, disk sleep and system sleep (on AC), so the network stays up too.
+a claude code mod that keeps your mac awake (`caffeinate -dim`) while a session has anything in flight, and lets go as soon as it's idle. that blocks display sleep, idle sleep and disk sleep, on battery too, so the network stays up.
 
 counts as in flight:
 - the main agent mid-turn
