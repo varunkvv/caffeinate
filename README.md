@@ -1,6 +1,6 @@
 # caffeinate
 
-a claude code mod that keeps your mac awake (`caffeinate -i`) while a session has anything in flight, and lets go as soon as it's idle.
+a claude code mod that keeps your mac awake (`caffeinate -dims`) while a session has anything in flight, and lets go as soon as it's idle. that blocks display sleep, idle sleep, disk sleep and system sleep (on AC), so the network stays up too.
 
 counts as in flight:
 - the main agent mid-turn
@@ -30,6 +30,9 @@ answer `y` to add the marketplace, then pick a scope (user scope loads it in eve
 in the desktop app: click + next to the prompt box, then Plugins, Add marketplace with `varunkvv/caffeinate`, then Add plugin.
 
 ## keep in mind
+
+- caffeinate has no network flag. the network stays up because the system stays awake
+- closing the lid on battery still sleeps the mac, caffeinate can't stop that
 
 - recurring crons and `/loop` don't keep the mac awake, they'd hold it up forever
 - background tasks are tracked from their tool results and cleared by their completion notification or `TaskStop`. a task that ends without notifying the session keeps the mac awake until the session ends
